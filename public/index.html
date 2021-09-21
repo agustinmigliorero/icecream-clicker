@@ -35,6 +35,18 @@
 </head>
 <body class="unselectable">
 
+
+
+
+  <!-- LOADER --> 
+  <div id="loader-window">
+    <div class="loader-wrapper">
+      <h1 class="loader-text">Cargando...</h1>
+      <div class="loader"></div>
+    </div>
+  </div>
+
+
                                 <!-- NAVBAR -->
 
         <!-- <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
@@ -95,92 +107,19 @@
                 <h1 class="title is-4 titulo-helado">Produccion actual: <span id="cookies-por-segundo">0</span>/seg</h1>
             </div>
             <div class="column is-half center borde-columna-1-2">
-              <button class="button is-medium is-info" id="button-exportar">Exportar Partida</button>
-              <button class="button is-medium is-success" id="button-importar">Importar Partida</button>
+              <button class="button is-medium is-info" id="button-exportar" onclick="document.querySelector('#modal-exportar').classList.add('is-active')">Exportar Partida</button>
+              <button class="button is-medium is-success" id="button-importar" onclick="document.querySelector('#modal-importar').classList.add('is-active')">Importar Partida</button>
               <button class="button is-medium is-danger" id="button-reset">Reiniciar Partida</button>
+              <button class="button is-medium is-link" id="button-estadisticas">Estadisticas</button>
+
+              <div style="position: absolute;" id="tooltips-div"></div>
             </div>
             <div class="column borde-columna-1-3">
+              
               <div id="contenedor-mejoras" class="contenedor-mejoras">
-                <div class="borde-mejora hidden tooltip-mejoras" id="upgrade1">
-                  <img src="./images/Heladero.png">
-                  <section class="left">
-                    <p>Click Poderoso!</p>
-                    <p>El click es el doble de potente!</p>
-                    <p>Coste: <b>100</b> Helados</p>
-                    <i></i>
-                  </section>
-                </div>
 
-                <div class="borde-mejora hidden tooltip-mejoras" id="upgrade2">
-                  <img src="./images/Cuchara2.png">
-                  <section class="left">
-                    <p>Cucharas Mutantes</p>
-                    <p>Tus cucharas producen el doble!</p>
-                    <p>Coste: <b>300</b> Helados</p>
-                    <i></i>
-                  </section>
-                </div>
-
-                <div class="borde-mejora hidden tooltip-mejoras" id="upgrade3">
-                  <img src="./images/Heladero.png">
-                  <section class="left">
-                    <p>Click Poderoso!</p>
-                    <p>El click es el doble de potente!</p>
-                    <p>Coste: <b>750</b> Helados</p>
-                    <i></i>
-                  </section>
-                </div>
-
-                <div class="borde-mejora hidden tooltip-mejoras" id="upgrade4">
-                  <img src="./images/Heladero.png">
-                  <section class="left">
-                    <p>Click Poderoso!</p>
-                    <p>El click es el doble de potente!</p>
-                    <p>Coste: <b>2500</b> Helados</p>
-                    <i></i>
-                  </section>
-                </div>
-
-                <div class="borde-mejora hidden tooltip-mejoras" id="upgrade2">
-                  <img src="./images/Cuchara2.png">
-                  <section class="left">
-                    <p>Cucharas Mutantes</p>
-                    <p>Tus cucharas producen el doble!</p>
-                    <p>Coste: <b>3000</b> Helados</p>
-                    <i></i>
-                  </section>
-                </div>
-                <!--<div class="borde-mejora" id="upgrade3">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade4">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade5">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade6">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade7">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade8">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade9">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade10">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade11">
-                  <img src="./images/cuchara.png">
-                </div>
-                <div class="borde-mejora" id="upgrade12">
-                  <img src="./images/cuchara.png">
-                </div> -->
               </div>
+
             </div>
           </div>
           
@@ -199,13 +138,13 @@
                   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="./images/diario.jpg" class="d-block w-50" alt="...">
+                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="./images/diario.jpg" class="d-block w-50" alt="...">
+                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="./images/diario.jpg" class="d-block w-50" alt="...">
+                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -223,290 +162,175 @@
               </div>
 
               <div class="column borde-columna-2-3">
-                <div class="tooltippp">
-                  <table class="shop-button unselectable disabled" id="buy-farmer">
+
+                <button id="boton-comprar-por1" class="button is-danger is-warning">x1</button>
+                <button id="boton-comprar-por10"class="button is-danger is-warning">x10</button>
+                <button id="boton-comprar-por100"class="button is-danger is-warning">x100</button>
+
+                  <table onmouseover="mouseHoverEdificios(0)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                     <tr>
                         <td id="image"><img src="images/Cuchara2.png" alt=""></td>
                         <td id="name-and-cost">
                             <p>Cucharas</p>
-                            <p><span id="precio-farm">15</span> Helados</p>
+                            <p><span class="selector-precio-edificio">15</span> Helados</p>
                         </td>
-                        <td id="amount"><span id="farmer">0</span></td>
+                        <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                     </tr>
-                  </table>
-                  <section class="bottom">
-                    <p>Cucharas</p>
-                    <p>Compra cucharas para hacer helado!</p>
-                    <p>Cada una produce <b>0.1</b> Helados</p>
-                    <i></i>
-                  </section>  
-                </div>      
+                  </table>  
 
-                <div class="tooltippp">
-                  <table class="shop-button unselectable disabled" id="buy-farmer2">
+                  <table onmouseover="mouseHoverEdificios(1)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                     <tr>
                         <td id="image"><img src="images/Heladero.png" alt=""></td>
                         <td id="name-and-cost">
                             <p>Heladeros</p>
-                            <p><span id="precio-farm2">100</span> Helados</p>
+                            <p><span class="selector-precio-edificio">100</span> Helados</p>
                         </td>
-                        <td id="amount"><span id="farmer2">0</span></td>
+                        <td id="amount"><span  class="selector-cantidad-edificio">0</span></td>
                     </tr>
                   </table>
-                  <section class="bottom">
-                    <p>Heladeros</p>
-                    <p>Contrata heladeros!</p>
-                    <p>Cada uno produce <b>0.5</b> Helados</p>
-                    <i></i>
-                  </section>  
-                </div>
 
-                <div class="tooltippp">
-                  <table class="shop-button unselectable disabled" id="buy-farmer3">
+                  <table onmouseover="mouseHoverEdificios(2)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                     <tr>
                         <td id="image"><img src="images/Puesto.png" alt=""></td>
                         <td id="name-and-cost">
                             <p>Carritos</p>
-                            <p><span id="precio-farm3">500</span> Helados</p>
+                            <p><span class="selector-precio-edificio" id="precio-farm3">500</span> Helados</p>
                         </td>
-                        <td id="amount"><span id="farmer3">0</span></td>
+                        <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                     </tr>
                   </table>
-                  <section class="bottom">
-                    <p>Carrito de Helados!</p>
-                    <p>Compra carritos para vender helados!</p>
-                    <p>Cada uno produce <b>4</b> Helados</p>
-                    <i></i>
-                  </section> 
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer4">
+                <table onmouseover="mouseHoverEdificios(3)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Camion.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Camiones</p>
-                          <p><span id="precio-farm4">3.0k</span> Helados</p>
+                          <p><span class="selector-precio-edificio">3.0k</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer4">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="bottom">
-                  <p>Camiones de Helados!</p>
-                  <p>Compra camiones para vender helados!</p>
-                  <p>Cada uno produce <b>10</b> Helados</p>
-                  <i></i>
-                </section> 
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer5">
+                <table onmouseover="mouseHoverEdificios(4)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/heladeria.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Heladerias</p>
-                          <p><span id="precio-farm5">10.0k</span> Helados</p>
+                          <p><span class="selector-precio-edificio">10.0k</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer5">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="bottom">
-                  <p>Heladerias!</p>
-                  <p>Abre tus propias heladerias!</p>
-                  <p>Cada una produce <b>40</b> Helados</p>
-                  <i></i>
-                </section> 
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer6">
+                <table onmouseover="mouseHoverEdificios(5)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Granja.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Granjas</p>
-                          <p><span id="precio-farm6">40.0k</span> Helados</p>
+                          <p><span class="selector-precio-edificio">40.0k</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer6">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="bottom">
-                  <p>Granjas!</p>
-                  <p>Crea tu propia granja de helados!</p>
-                  <p>Cada una produce <b>100</b> Helados</p>
-                  <i></i>
-                </section> 
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer7">
+                <table onmouseover="mouseHoverEdificios(6)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Fabrica.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Fabricas</p>
-                          <p><span id="precio-farm7">200.0k</span> Helados</p>
+                          <p><span class="selector-precio-edificio">200.0k</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer7">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="bottom">
-                  <p>Fabricas!</p>
-                  <p>Produce helados industrializados!</p>
-                  <p>Cada una produce <b>400</b> Helados</p>
-                  <i></i>
-                </section> 
-              </div>
                 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer8">
+                <table onmouseover="mouseHoverEdificios(7)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Iglesia.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Iglesias</p>
-                          <p><span id="precio-farm8">1.6M</span> Helados</p>
+                          <p><span class="selector-precio-edificio">1.6M</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer8">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Iglesias</p>
-                  <p>Aprovecha el Boom de la religion!</p>
-                  <p>Cada una produce <b>6000</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer9">
+                <table onmouseover="mouseHoverEdificios(8)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Banco.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Bancos</p>
-                          <p><span id="precio-farm9">100.0M</span> Helados</p>
+                          <p><span class="selector-precio-edificio">100.0M</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer9">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Bancos</p>
-                  <p>Otorga prestamos de helados!</p>
-                  <p>Cada uno produce <b>90000</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer10">
+                <table onmouseover="mouseHoverEdificios(9)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Alquimia.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Alquimia</p>
-                          <p><span id="precio-farm10">4.0B</span> Helados</p>
+                          <p><span class="selector-precio-edificio">4.0B</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer10">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Alquimia</p>
-                  <p>Crea helados con la piedra filosofal</p>
-                  <p>Cada una produce <b>900.0k</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer11">
+                <table onmouseover="mouseHoverEdificios(10)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Aliens.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Aliens</p>
-                          <p><span id="precio-farm11">75.0B</span> Helados</p>
+                          <p><span class="selector-precio-edificio">75.0B</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer11">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Aliens</p>
-                  <p>Contrata Aliens expertos en helados!</p>
-                  <p>Cada uno produce <b>10.00M</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer12">
+                <table onmouseover="mouseHoverEdificios(11)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Planeta.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Planetas</p>
-                          <p><span id="precio-farm12">1.5T</span> Helados</p>
+                          <p><span class="selector-precio-edificio">1.5T</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer12">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Planetas</p>
-                  <p>Establece bases en los planetas de helado!</p>
-                  <p>Cada uno produce <b>100.0M</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer13">
+                <table onmouseover="mouseHoverEdificios(12)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Portal.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Portales</p>
-                          <p><span id="precio-farm13">30T</span> Helados</p>
+                          <p><span class="selector-precio-edificio">30T</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer13">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Portales</p>
-                  <p>Portales hacia la dimension de los helados!</p>
-                  <p>Cada uno produce <b>1.000B</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer14">
+                <table onmouseover="mouseHoverEdificios(13)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Monstruo2.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Monstruos</p>
-                          <p><span id="precio-farm14">550T</span> Helados</p>
+                          <p><span class="selector-precio-edificio">550T</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer14">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Monstruos</p>
-                  <p>Monstruos de la dimension de los helados!</p>
-                  <p>Cada uno produce <b>10.00B</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
-              <div class="tooltippp">
-                <table class="shop-button unselectable disabled" id="buy-farmer15">
+                <table onmouseover="mouseHoverEdificios(14)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
                   <tr>
                       <td id="image"><img src="images/Divinidad.png" alt=""></td>
                       <td id="name-and-cost">
                           <p>Dioses</p>
-                          <p><span id="precio-farm15">1.5Q</span> Helados</p>
+                          <p><span class="selector-precio-edificio">1.5Q</span> Helados</p>
                       </td>
-                      <td id="amount"><span id="farmer15">0</span></td>
+                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
                   </tr>
                 </table>
-                <section class="top">
-                  <p>Dioses Heladeros</p>
-                  <p>Los creadores de todo, usalos a tu favor!</p>
-                  <p>Cada uno produce <b>1.000T</b> Helados</p>
-                  <i></i>
-                </section>
-              </div>
 
                 <!-- <div>
                   <img src="./images/publicidad.jpg" alt="">
@@ -525,34 +349,50 @@
               </div>
             </footer>
 
-              <div class="modal">
+              <div class="modal" id="modal-estadisticas">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                   <header class="modal-card-head">
-                    <p class="modal-card-title">Logros!</p>
-                    <button class="delete" aria-label="close"></button>
+                    <p class="modal-card-title">Estadisticas totales</p>
                   </header>
-                  <section class="modal-card-body">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae soluta enim sunt architecto voluptatum, alias, accusantium recusandae laudantium qui rem deleniti. Sed dolores dolorem facilis. Illum, non vel. Delectus sunt omnis illum similique cum, tempore mollitia labore neque excepturi natus sapiente accusantium ad eos facilis in! Distinctio dolore iste aut?
+                  <section class="modal-card-body" id="contenedor-modal-estadisticas">
+                      
                   </section>
                   <footer class="modal-card-foot">
-                    <button class="button is-success">Cerrar</button>
+                    <button onclick="document.querySelector('#modal-estadisticas').classList.remove('is-active')" class="button is-danger">Cerrar</button>
                   </footer>
                 </div>
               </div>
 
-              <div class="modal">
+              <div class="modal" id="modal-exportar">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                   <header class="modal-card-head">
-                    <p class="modal-card-title">Historia del desarrollo de Ice-Cream Clicker!</p>
-                    <button class="delete" aria-label="close"></button>
+                    <p class="modal-card-title">Copia y guarda este archivo en un lugar seguro!</p>
                   </header>
                   <section class="modal-card-body">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae soluta enim sunt architecto voluptatum, alias, accusantium recusandae laudantium qui rem deleniti. Sed dolores dolorem facilis. Illum, non vel. Delectus sunt omnis illum similique cum, tempore mollitia labore neque excepturi natus sapiente accusantium ad eos facilis in! Distinctio dolore iste aut?
+                    <p>Esta es tu partida guardada (Recuerda que puedes guardar con Ctrl + S fuera de esta ventana para tener tu partida actualizada)</p>
+                      <textarea name="" id="textarea-exportar" cols="80" rows="10"></textarea>
                   </section>
                   <footer class="modal-card-foot">
-                    <button class="button is-success">Cerrar</button>
+                    <button onclick="document.querySelector('#modal-exportar').classList.remove('is-active')" class="button is-danger">Cerrar</button>
+                  </footer>
+                </div>
+              </div>
+
+              <div class="modal" id="modal-importar">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Pega aqui tu partida guardada!</p>
+                  </header>
+                  <section class="modal-card-body">
+                    <p>Aqui puedes pegar tu archivo de guardado para seguir jugando. Para conseguir tu archivo de guardado haz click en exportar partida.</p>
+                      <textarea name="" id="textarea-importar" cols="80" rows="10"></textarea>
+                      <button onclick="importSaveFile();" class="button is-success">Importar partida</button>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button onclick="document.querySelector('#modal-importar').classList.remove('is-active')" class="button is-danger">Cerrar</button>
                   </footer>
                 </div>
               </div>
@@ -561,6 +401,6 @@
               <div id="pops"></div>
 
 
-    <script src='nuevomain.js'></script>
+    <script src='main.js'></script>
 </body>
 </html>

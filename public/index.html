@@ -1,55 +1,73 @@
-
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
-    <link rel="icon" type="image/png" href="images/helado-icon.png"/>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/png" href="images/helado-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JY1ZE4VC22"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JY1ZE4VC22"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-JY1ZE4VC22');
+      gtag("config", "G-JY1ZE4VC22");
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='bulma.min.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='./librerias/decimal.js'></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="./librerias/decimal.js"></script>
     <script src="//cdn.rawgit.com/erosson/swarm-numberformat/v0.4.0/dist/swarm-numberformat.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-
-
-</head>
-<body class="unselectable">
-
-
-
-
-  <!-- LOADER --> 
-  <div id="loader-window">
-    <div class="loader-wrapper">
-      <h1 class="loader-text">Cargando...</h1>
-      <div class="loader"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  </head>
+  <body class="unselectable">
+    <!-- LOADER -->
+    <div id="loader-window">
+      <div class="loader-wrapper">
+        <h1 class="loader-text">Cargando...</h1>
+        <div class="loader"></div>
+      </div>
     </div>
-  </div>
 
+    <!-- NAVBAR -->
 
-                                <!-- NAVBAR -->
-
-        <!-- <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <!-- <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item">
                 <img src="./images/logo.png" width="75">
@@ -89,318 +107,526 @@
             </div>
           </nav> -->
 
+    <!-- NAVBAR -->
 
+    <div
+      id="notificacion-compra"
+      class="notification is-danger has-text-centered tamanio-notificacion hidden-notificacion"
+    >
+      No tienes suficientes helados para comprar eso.
+    </div>
 
-                                    <!-- NAVBAR -->
+    <div
+      id="notificacion-guardado"
+      class="notification is-success has-text-centered tamanio-notificacion hidden-notificacion"
+    >
+      Juego guardado correctamente.
+    </div>
 
-          <div id="notificacion-compra" class="notification is-danger has-text-centered tamanio-notificacion hidden-notificacion">
-            No tienes suficientes helados para comprar eso.
-          </div>
+    <div class="columns margenes">
+      <div class="column center borde-columna-1-1">
+        <h1 class="title is-3 titulo-helado">
+          Helados: <span id="cookies">0</span>
+        </h1>
+        <h1 class="title is-4 titulo-helado">
+          Produccion actual: <span id="cookies-por-segundo">0</span>/seg
+        </h1>
+      </div>
+      <div class="column is-half center borde-columna-1-2">
+        <button
+          class="button is-medium is-info"
+          id="button-exportar"
+          onclick="document.querySelector('#modal-exportar').classList.add('is-active')"
+        >
+          Exportar Partida
+        </button>
+        <button
+          class="button is-medium is-success"
+          id="button-importar"
+          onclick="document.querySelector('#modal-importar').classList.add('is-active')"
+        >
+          Importar Partida
+        </button>
+        <button class="button is-medium is-danger" id="button-reset">
+          Reiniciar Partida
+        </button>
+        <button class="button is-medium is-link" id="button-estadisticas">
+          Estadisticas
+        </button>
 
-          <div id="notificacion-guardado" class="notification is-success has-text-centered tamanio-notificacion hidden-notificacion">
-            Juego guardado correctamente.
-          </div>
+        <div style="position: absolute" id="tooltips-div"></div>
+      </div>
+      <div class="column borde-columna-1-3">
+        <div id="contenedor-mejoras" class="contenedor-mejoras"></div>
+      </div>
+    </div>
 
-          <div class="columns margenes">
-            <div class="column center borde-columna-1-1">
-                <h1 class="title is-3 titulo-helado">Helados: <span id="cookies">0</span></h1>
-                <h1 class="title is-4 titulo-helado">Produccion actual: <span id="cookies-por-segundo">0</span>/seg</h1>
-            </div>
-            <div class="column is-half center borde-columna-1-2">
-              <button class="button is-medium is-info" id="button-exportar" onclick="document.querySelector('#modal-exportar').classList.add('is-active')">Exportar Partida</button>
-              <button class="button is-medium is-success" id="button-importar" onclick="document.querySelector('#modal-importar').classList.add('is-active')">Importar Partida</button>
-              <button class="button is-medium is-danger" id="button-reset">Reiniciar Partida</button>
-              <button class="button is-medium is-link" id="button-estadisticas">Estadisticas</button>
-
-              <div style="position: absolute;" id="tooltips-div"></div>
-            </div>
-            <div class="column borde-columna-1-3">
-              
-              <div id="contenedor-mejoras" class="contenedor-mejoras">
-
-              </div>
-
-            </div>
-          </div>
-          
-          <div>
-            <div class="columns">
-              <div class="column center borde-columna-2-1 fondo-helado">
-                <div class="">
+    <div>
+      <div class="columns">
+        <div class="column center borde-columna-2-1 fondo-helado">
+          <div class=""></div>
+          <img
+            class="helado margenes-helado"
+            width="150px"
+            src="./images/helado-nuevo.png"
+            id="button-cookie"
+            alt=""
+          />
+        </div>
+        <div class="column is-half borde-columna-2-2">
+          <center>
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="./images/Diario.png"
+                    class="d-block w-75"
+                    alt="..."
+                  />
                 </div>
-                  <img class="helado margenes-helado" width="150px" src="./images/helado-nuevo.png" id="button-cookie" alt="">
-
+                <div class="carousel-item">
+                  <img
+                    src="./images/Diario.png"
+                    class="d-block w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/Diario.png"
+                    class="d-block w-75"
+                    alt="..."
+                  />
+                </div>
               </div>
-              <div class="column is-half borde-columna-2-2">
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </center>
+        </div>
 
-                <center>
+        <div class="column borde-columna-2-3">
+          <button id="boton-comprar-por1" class="button is-danger is-warning">
+            x1
+          </button>
+          <button id="boton-comprar-por10" class="button is-danger is-warning">
+            x10
+          </button>
+          <button id="boton-comprar-por100" class="button is-danger is-warning">
+            x100
+          </button>
 
-                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="./images/Diario.png" class="d-block w-75" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
+          <table
+            onmouseover="mouseHoverEdificios(0)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Cuchara2.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Cucharas</p>
+                <p><span class="selector-precio-edificio">15</span> Helados</p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                </center>
+          <table
+            onmouseover="mouseHoverEdificios(1)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Heladero.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Heladeros</p>
+                <p><span class="selector-precio-edificio">100</span> Helados</p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-              </div>
+          <table
+            onmouseover="mouseHoverEdificios(2)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Puesto.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Carritos</p>
+                <p>
+                  <span class="selector-precio-edificio" id="precio-farm3"
+                    >500</span
+                  >
+                  Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-              <div class="column borde-columna-2-3">
+          <table
+            onmouseover="mouseHoverEdificios(3)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Camion.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Camiones</p>
+                <p>
+                  <span class="selector-precio-edificio">3.0k</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <button id="boton-comprar-por1" class="button is-danger is-warning">x1</button>
-                <button id="boton-comprar-por10"class="button is-danger is-warning">x10</button>
-                <button id="boton-comprar-por100"class="button is-danger is-warning">x100</button>
+          <table
+            onmouseover="mouseHoverEdificios(4)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/heladeria.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Heladerias</p>
+                <p>
+                  <span class="selector-precio-edificio">10.0k</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                  <table onmouseover="mouseHoverEdificios(0)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                    <tr>
-                        <td id="image"><img src="images/Cuchara2.png" alt=""></td>
-                        <td id="name-and-cost">
-                            <p>Cucharas</p>
-                            <p><span class="selector-precio-edificio">15</span> Helados</p>
-                        </td>
-                        <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                    </tr>
-                  </table>  
+          <table
+            onmouseover="mouseHoverEdificios(5)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Granja.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Granjas</p>
+                <p>
+                  <span class="selector-precio-edificio">40.0k</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                  <table onmouseover="mouseHoverEdificios(1)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                    <tr>
-                        <td id="image"><img src="images/Heladero.png" alt=""></td>
-                        <td id="name-and-cost">
-                            <p>Heladeros</p>
-                            <p><span class="selector-precio-edificio">100</span> Helados</p>
-                        </td>
-                        <td id="amount"><span  class="selector-cantidad-edificio">0</span></td>
-                    </tr>
-                  </table>
+          <table
+            onmouseover="mouseHoverEdificios(6)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Fabrica.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Fabricas</p>
+                <p>
+                  <span class="selector-precio-edificio">200.0k</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                  <table onmouseover="mouseHoverEdificios(2)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                    <tr>
-                        <td id="image"><img src="images/Puesto.png" alt=""></td>
-                        <td id="name-and-cost">
-                            <p>Carritos</p>
-                            <p><span class="selector-precio-edificio" id="precio-farm3">500</span> Helados</p>
-                        </td>
-                        <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                    </tr>
-                  </table>
+          <table
+            onmouseover="mouseHoverEdificios(7)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Iglesia.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Iglesias</p>
+                <p>
+                  <span class="selector-precio-edificio">1.6M</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(3)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Camion.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Camiones</p>
-                          <p><span class="selector-precio-edificio">3.0k</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(8)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Banco.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Bancos</p>
+                <p>
+                  <span class="selector-precio-edificio">100.0M</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(4)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/heladeria.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Heladerias</p>
-                          <p><span class="selector-precio-edificio">10.0k</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(9)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Alquimia.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Alquimia</p>
+                <p>
+                  <span class="selector-precio-edificio">4.0B</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(5)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Granja.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Granjas</p>
-                          <p><span class="selector-precio-edificio">40.0k</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(10)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Aliens.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Aliens</p>
+                <p>
+                  <span class="selector-precio-edificio">75.0B</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(6)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Fabrica.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Fabricas</p>
-                          <p><span class="selector-precio-edificio">200.0k</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
-                
-                <table onmouseover="mouseHoverEdificios(7)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Iglesia.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Iglesias</p>
-                          <p><span class="selector-precio-edificio">1.6M</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(11)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Planeta.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Planetas</p>
+                <p>
+                  <span class="selector-precio-edificio">1.5T</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(8)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Banco.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Bancos</p>
-                          <p><span class="selector-precio-edificio">100.0M</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(12)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Portal.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Portales</p>
+                <p><span class="selector-precio-edificio">30T</span> Helados</p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(9)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Alquimia.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Alquimia</p>
-                          <p><span class="selector-precio-edificio">4.0B</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(13)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Monstruo2.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Monstruos</p>
+                <p>
+                  <span class="selector-precio-edificio">550T</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(10)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Aliens.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Aliens</p>
-                          <p><span class="selector-precio-edificio">75.0B</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
+          <table
+            onmouseover="mouseHoverEdificios(14)"
+            onmouseleave="mouseOutEdificios()"
+            class="shop-button unselectable disabled selector-boton-edificio"
+          >
+            <tr>
+              <td id="image"><img src="images/Divinidad.png" alt="" /></td>
+              <td id="name-and-cost">
+                <p>Dioses</p>
+                <p>
+                  <span class="selector-precio-edificio">1.5Q</span> Helados
+                </p>
+              </td>
+              <td id="amount">
+                <span class="selector-cantidad-edificio">0</span>
+              </td>
+            </tr>
+          </table>
 
-                <table onmouseover="mouseHoverEdificios(11)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Planeta.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Planetas</p>
-                          <p><span class="selector-precio-edificio">1.5T</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
-
-                <table onmouseover="mouseHoverEdificios(12)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Portal.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Portales</p>
-                          <p><span class="selector-precio-edificio">30T</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
-
-                <table onmouseover="mouseHoverEdificios(13)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Monstruo2.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Monstruos</p>
-                          <p><span class="selector-precio-edificio">550T</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
-
-                <table onmouseover="mouseHoverEdificios(14)" onmouseleave="mouseOutEdificios()" class="shop-button unselectable disabled selector-boton-edificio">
-                  <tr>
-                      <td id="image"><img src="images/Divinidad.png" alt=""></td>
-                      <td id="name-and-cost">
-                          <p>Dioses</p>
-                          <p><span class="selector-precio-edificio">1.5Q</span> Helados</p>
-                      </td>
-                      <td id="amount"><span class="selector-cantidad-edificio">0</span></td>
-                  </tr>
-                </table>
-
-                <!-- <div>
+          <!-- <div>
                   <img src="./images/publicidad.jpg" alt="">
                 </div> -->
+        </div>
+      </div>
+    </div>
 
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Ice-Cream Clicker!</strong>
+        </p>
+      </div>
+    </footer>
 
-              </div>
-            </div>
-          </div>
+    <div class="modal" id="modal-estadisticas">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Estadisticas totales</p>
+        </header>
+        <section
+          class="modal-card-body"
+          id="contenedor-modal-estadisticas"
+        ></section>
+        <footer class="modal-card-foot">
+          <button
+            onclick="document.querySelector('#modal-estadisticas').classList.remove('is-active')"
+            class="button is-danger"
+          >
+            Cerrar
+          </button>
+        </footer>
+      </div>
+    </div>
 
-            <footer class="footer">
-              <div class="content has-text-centered">
-                <p>
-                  <strong>Ice-Cream Clicker!</strong>
-                </p>
-              </div>
-            </footer>
+    <div class="modal" id="modal-exportar">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+            Copia y guarda este archivo en un lugar seguro!
+          </p>
+        </header>
+        <section class="modal-card-body">
+          <p>
+            Esta es tu partida guardada (Recuerda que puedes guardar con Ctrl +
+            S fuera de esta ventana para tener tu partida actualizada)
+          </p>
+          <textarea
+            name=""
+            id="textarea-exportar"
+            cols="80"
+            rows="10"
+          ></textarea>
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            onclick="document.querySelector('#modal-exportar').classList.remove('is-active')"
+            class="button is-danger"
+          >
+            Cerrar
+          </button>
+        </footer>
+      </div>
+    </div>
 
-              <div class="modal" id="modal-estadisticas">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Estadisticas totales</p>
-                  </header>
-                  <section class="modal-card-body" id="contenedor-modal-estadisticas">
-                      
-                  </section>
-                  <footer class="modal-card-foot">
-                    <button onclick="document.querySelector('#modal-estadisticas').classList.remove('is-active')" class="button is-danger">Cerrar</button>
-                  </footer>
-                </div>
-              </div>
+    <div class="modal" id="modal-importar">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Pega aqui tu partida guardada!</p>
+        </header>
+        <section class="modal-card-body">
+          <p>
+            Aqui puedes pegar tu archivo de guardado para seguir jugando. Para
+            conseguir tu archivo de guardado haz click en exportar partida.
+          </p>
+          <textarea
+            name=""
+            id="textarea-importar"
+            cols="80"
+            rows="10"
+          ></textarea>
+          <button onclick="importSaveFile();" class="button is-success">
+            Importar partida
+          </button>
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            onclick="document.querySelector('#modal-importar').classList.remove('is-active')"
+            class="button is-danger"
+          >
+            Cerrar
+          </button>
+        </footer>
+      </div>
+    </div>
 
-              <div class="modal" id="modal-exportar">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Copia y guarda este archivo en un lugar seguro!</p>
-                  </header>
-                  <section class="modal-card-body">
-                    <p>Esta es tu partida guardada (Recuerda que puedes guardar con Ctrl + S fuera de esta ventana para tener tu partida actualizada)</p>
-                      <textarea name="" id="textarea-exportar" cols="80" rows="10"></textarea>
-                  </section>
-                  <footer class="modal-card-foot">
-                    <button onclick="document.querySelector('#modal-exportar').classList.remove('is-active')" class="button is-danger">Cerrar</button>
-                  </footer>
-                </div>
-              </div>
+    <div id="pops"></div>
+    <div id="helado-random"></div>
 
-              <div class="modal" id="modal-importar">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Pega aqui tu partida guardada!</p>
-                  </header>
-                  <section class="modal-card-body">
-                    <p>Aqui puedes pegar tu archivo de guardado para seguir jugando. Para conseguir tu archivo de guardado haz click en exportar partida.</p>
-                      <textarea name="" id="textarea-importar" cols="80" rows="10"></textarea>
-                      <button onclick="importSaveFile();" class="button is-success">Importar partida</button>
-                  </section>
-                  <footer class="modal-card-foot">
-                    <button onclick="document.querySelector('#modal-importar').classList.remove('is-active')" class="button is-danger">Cerrar</button>
-                  </footer>
-                </div>
-              </div>
-
-
-              <div id="pops"></div>
-
-
-    <script src='main.js'></script>
-</body>
+    <script src="mejoras.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
